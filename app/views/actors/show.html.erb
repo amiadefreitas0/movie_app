@@ -1,0 +1,16 @@
+<h1><%=@actor.name%>'s Page</h1>
+<h2>Bio</h2>
+<p><%=@actor.bio%> and I am <%=@actor.age%> Years young</p>
+
+<h2>List of movies</h2>
+<ul>
+<%@actor.movies.each do |movie| %>
+   <li> <%=link_to movie.title, movie_path(movie)%></li>
+<% end %>
+</ul>
+
+<%= link_to 'Back to Home page.', actors_path %><br>
+<%= link_to 'Edit this actor.', edit_actor_path(@actor) %><br>
+<%= link_to 'Delete this actor.', actor_path(@actor), :method => :delete%>
+
+

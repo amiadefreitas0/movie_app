@@ -6,11 +6,13 @@ class ActorsController < ApplicationController
   end
 
   def show
-    @roles = Role.all
   end
 
   def new
     @actor = Actor.new
+    @actor.movies.build
+    @actor.movies.build
+
   end
 
   def create
@@ -36,7 +38,11 @@ class ActorsController < ApplicationController
   private
 
   def actor_params
-    params.require(:actor).permit!
+    params.require(:actor).permit(:name,:age, :bio, movies_attributes:[
+      :title,
+      :description,
+      :length
+    ])
   end
 
   def finds_actor

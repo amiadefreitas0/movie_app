@@ -33,7 +33,11 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :length)
+    params.require(:movie).permit(:title, :description, :length, actor_attributes:[
+      :name,
+      :age,
+      :bio
+    ])
   end
 
   def find_movie

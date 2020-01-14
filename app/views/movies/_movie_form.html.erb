@@ -7,5 +7,9 @@
 
     <%= f.label :length %><br />
     <%= f.number_field :length %><br />
+        <%=f.collection_select :actor_ids, Actor.all, :id, :name,{:prompt=>"Select an actor"}%>
+
   <%= f.submit%>
 <% end %>
+
+<%= link_to 'Back to movies home page', movies_path %>

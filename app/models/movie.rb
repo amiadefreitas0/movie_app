@@ -3,6 +3,7 @@ class Movie < ApplicationRecord
     has_many :actors, through: :roles
     accepts_nested_attributes_for :actors
 
+
     
 
 end

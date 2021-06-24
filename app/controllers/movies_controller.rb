@@ -3,18 +3,17 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    render json:@movies
   end
 
   def show
-  end
-
-  def new
-    @movie = Movie.new
+    movie = Movie.all.find(params[:id])
+    render json:movie
   end
 
   def create
-    @movie = Movie.create(movie_params)
-    redirect_to movie_path(@movie)
+    movie = Movie.find_or_create_by(title: params[:text],description:params[:text],length:[:length])
+    render json: movie
   end
 
   def edit
@@ -33,11 +32,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :length, actor_attributes:[
-      :name,
-      :age,
-      :bio
-    ])
+    params.require(:movie).permit!
   end
 
   def find_movie

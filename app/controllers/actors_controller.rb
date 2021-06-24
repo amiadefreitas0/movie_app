@@ -2,7 +2,8 @@ class ActorsController < ApplicationController
 
     before_action :finds_actor, only: [:show,:edit,:destroy,:update]
   def index
-    @actors = Actor.all
+    actors = Actor.all
+    render json: actors
   end
 
   def show

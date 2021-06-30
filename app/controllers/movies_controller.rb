@@ -2,8 +2,8 @@ class MoviesController < ApplicationController
   before_action :find_movie, only: [:show, :edit, :update,:destroy]
 
   def index
-    @movies = Movie.all
-    render json:@movies
+    movies = Movie.all
+    render json:movies
   end
 
   def show
@@ -16,18 +16,10 @@ class MoviesController < ApplicationController
     render json: movie
   end
 
-  def edit
-  end
 
-  def update
-    @movie.update(movie_params)
-    redirect_to movie_path(@movie)
-  end
 
-  def delete
-    @movie.destroy
-    redirect_to movies_path
-  end
+  
+
 
   private
 
